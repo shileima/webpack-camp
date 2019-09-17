@@ -1,0 +1,12 @@
+$color:black;
+
+body {
+    background: $color
+}
+
+div {
+    width:200px;
+    height:200px;
+    background: orange;
+    transform: rotate(45deg) 
+}

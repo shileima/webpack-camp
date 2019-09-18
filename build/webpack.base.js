@@ -4,13 +4,26 @@ const prod = require('./webpack.prod');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = env => {
     let isDev = env.development
     const base = {
-        entry: path.resolve(__dirname, '../src/index.js'),
+        entry: path.resolve(__dirname, '../src/index.ts'),
         module:{
             rules:[
+                {
+                    test: /\.vue$/,
+                    use: 'vue-loader'
+                },
+                {
+                    test: /\.tsx?$/,
+                    use: 'babel-loader'
+                },
+                {
+                    test: /\.js$/,
+                    use: 'babel-loader'
+                },
                 {
                     test:/\.css$/,
                     use:[
@@ -55,6 +68,7 @@ module.exports = env => {
             !isDev && new MiniCssExtractPlugin({
                 filename: 'css/main.css'
             }),
+            new VueLoaderPlugin(),
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname,'../publick/index.html'),
                 filename: 'index.html',

@@ -1,14 +1,4 @@
-let rs = require('./a-module');
-import './index.scss';
-import './less.less';
-import './style.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log(rs)
-import logo from './logo.jpg';
-console.log(logo)
-
-let img = document.createElement('img');
-
-img.src = logo;
-
-document.body.append(img)
+ReactDOM.render(<div>HELLO</div>,document.getElementById('root'));

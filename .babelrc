@@ -1,0 +1,21 @@
+{
+    "presets": [
+        ["@babel/preset-env",{
+            // 使用的api会自动转化，并且按需加载
+            "useBuiltIns":"usage",
+            // babel-polyfill
+            "corejs":2
+        }],
+        "@babel/preset-react",
+        ["@babel/preset-typescript",{
+            "allExtensions":true
+        }]
+    ],
+    "plugins": [
+        ["@babel/plugin-proposal-decorators",{"legacy":true}],
+        ["@babel/plugin-proposal-class-properties",{"loose":true}],
+        "@babel/plugin-transform-runtime"
+    ]
+}
+
+/* presets 从下往上执行，plugins 相反 */

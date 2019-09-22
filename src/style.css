@@ -1,1 +1,9 @@
-@import './sass.scss'
+@import './sass.scss';
+
+body {
+    background: url('./logo.jpg')
+}
+
+.div2 {
+    height:'100px'
+}

@@ -8,7 +8,8 @@
         }],
         "@babel/preset-react",
         ["@babel/preset-typescript",{
-            "allExtensions":true
+            "allExtensions":false // 如果是react + ts 不需要allExtensions 或 allExtensions:false
+            // 如果是vue + ts 需要 allExtensions:true 因为 .vue file should be parsed as TS or TSX
         }]
     ],
     "plugins": [

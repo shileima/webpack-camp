@@ -106,7 +106,7 @@ module.exports = env => {
         optimization: {
             // usedExports:true,
             splitChunks: {
-                chunks: 'initial', // async 只打包异步的chunks initial 只打包同步 all 打包全部
+                chunks: 'async', // async 只打包异步的chunks initial 只打包同步 all 打包全部
                 minSize: 30000,
                 maxSize: 0,
                 minChunks: 1,
@@ -116,10 +116,14 @@ module.exports = env => {
                 automaticNameMaxLength: 30,
                 name: true,
                 cacheGroups: {
-                  /* react: {
-                    test: /[\\/]node_modules[\\/]\/react|react-dom//,
+                  jquery: {
+                    test: /[\\/]node_modules[\\/](jquery)/,
                     priority: 1
-                  }, */
+                  },
+                  react: {
+                    test: /[\\/]node_modules[\\/](react)|(react-dom)/,
+                    priority: 0
+                  },
                   vendors: {
                     test: /[\\/]node_modules[\\/]/,
                     priority: -10
@@ -159,14 +163,17 @@ module.exports = env => {
                 },
                 chunks:['a','index']
             }),
-            // dll plugin
-            new DLLReferencePlugin({
+
+            /* dllPlugin  */
+            // dll plugin and AddAssetHtmlPlugin 与 splitChunks 冲突
+            /* new DLLReferencePlugin({
                 manifest: path.resolve(__dirname,'../dll/manifest.json')
             }),
             // 把单独打包的react引入到html中
             new AddAssetHtmlPlugin({
                 filepath:path.resolve(__dirname,'../dll/react.dll.js')
-            }),
+            }), */
+
             // add cdn config
             new AddCdnPlugin(true,{
                 'jquery':'https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js',

@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './style.css'
-import('jquery');
-import 'lodash';
-
+import('lodash');
+import $ from 'jquery';
+console.log($)
 /* import $ from 'jquery'
 console.log($) */
 
